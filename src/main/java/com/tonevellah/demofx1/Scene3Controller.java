@@ -26,7 +26,7 @@ public class Scene3Controller {
     @FXML
     private PasswordField pass;
     @FXML
-    private Label warnin;
+    private Label warning;
     public String username;
     public String password;
     private Scene3ControllerDao scene3ControllerDao = new Scene3ControllerDao();
@@ -37,8 +37,8 @@ public class Scene3Controller {
 
         try {
             if (scene3ControllerDao.ifUsersExists(username)) { // If username already exists
-                warnin.setText("Name already taken!");
-                warnin.setVisible(true);
+                warning.setText("Name already taken!");
+                warning.setVisible(true);
                 System.out.println("user exists");
 
                 uname.setText("");
@@ -52,7 +52,9 @@ public class Scene3Controller {
                 stage.setScene(scene);
                 stage.show();
             }
-        } finally { // Closing All Resources (Connections and all)
+        } catch (Exception e){
+            System.out.println(e);
+        }finally { // Closing All Resources (Connections and all)
             try {
                 CloseResourcesDao closingResources = new CloseResourcesDao();
                 closingResources.closeResources();

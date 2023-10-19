@@ -29,12 +29,12 @@ public class Scene2Controller {
     @FXML
     private PasswordField pass;
     @FXML
-    private Label warnin;
+    private Label warning;
     public String username;
     public String password;
     private Scene2ControllerDao scene2ControllerDao = new Scene2ControllerDao();
 
-    public void menu(ActionEvent event) throws IOException {
+    public void menu(ActionEvent event)  {
         username=uname.getText();
         password=pass.getText();
 
@@ -51,8 +51,8 @@ public class Scene2Controller {
                     System.out.println(e);
                 }
             } else {
-                warnin.setText("Username not found!");
-                warnin.setVisible(true);
+                warning.setText("Wrong Name or Password!");
+                warning.setVisible(true);
                 System.out.println("User not found");
                 uname.setText("");
                 pass.setText("");
@@ -68,11 +68,16 @@ public class Scene2Controller {
             }
         }
     }
-    public void goback(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void goback(ActionEvent event)  {
+        try {
+            root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e){
+            System.out.println(e);
+            System.out.println("Failed to load hello-view.fxml");
+        }
     }
 }

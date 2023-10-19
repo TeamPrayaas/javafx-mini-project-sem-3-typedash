@@ -12,9 +12,15 @@ public class Scene3ControllerDao {
     private final String ADD_USER_BY_USERNAME_PASSWORD = "INSERT INTO users(username,password) VALUES(?,?)";
 
     public ResultSet getUsers() throws SQLException { //
-        userTable = jdbcConnection.con().createStatement();
-        ResultSet regTableRow = userTable.executeQuery(GET_USERS);
-        return regTableRow;
+        try {
+            userTable = jdbcConnection.con().createStatement();
+            ResultSet regTableRow = userTable.executeQuery(GET_USERS);
+            return regTableRow;
+        } catch(Exception e){
+            System.out.println(e);
+            System.out.println("Result set not created");
+        }
+        return null;
     }
     public boolean ifUsersExists(String username){
         try {

@@ -1,5 +1,4 @@
 package com.tonevellah.demofx1.dao;
-
 import java.sql.*;
 
 public class JdbcConnection {
