@@ -68,7 +68,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Label fx:id="warning" layoutX="677.0" layoutY="525.0" prefHeight="26.0" prefWidth="204.0" text="password dont match!" textFill="#bf2626" visible="false">
+      <Label fx:id="warning" alignment="CENTER" layoutX="677.0" layoutY="525.0" prefHeight="26.0" prefWidth="204.0" text="password dont match!" textFill="#bf2626" visible="false">
          <font>
             <Font size="16.0" />
          </font>

@@ -20,12 +20,11 @@ public class HelloApplication extends Application {
             stage.setTitle("TYPE DASH");
             Image icon = new Image("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniProjectSem3\\resources\\TypeDash1.png");
             stage.getIcons().add(icon);
-
+            stage.setFullScreen(true);
             stage.setScene(scene);
             stage.show();
         }
         catch(Exception e) {
-//            e.printStackTrace();
             System.out.println(e);
         }
     }

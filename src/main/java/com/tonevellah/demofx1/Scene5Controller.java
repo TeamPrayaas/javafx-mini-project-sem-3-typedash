@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -21,15 +22,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+
 import static com.tonevellah.demofx1.Scene1Controller.lvl;
 import static com.tonevellah.demofx1.Scene1Controller.car;
 import static com.tonevellah.demofx1.Scene1Controller.log;
 
 public class Scene5Controller implements Initializable {
-    @FXML
-    private Stage stage;
-    private Scene scene;
     private Parent root;
+    private Scene scene;
+    private Stage stage;
+
     @FXML
     public RadioButton rButton1;
     @FXML
@@ -39,7 +41,7 @@ public class Scene5Controller implements Initializable {
     @FXML
     private ChoiceBox<String> myChoiceBox=new ChoiceBox<String>();
     private String[] cars = {"Yellow","Red","Pink"};
-    static public int virkey=0;
+    private FxmlLoader fxmlLoader = new FxmlLoader();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -61,16 +63,21 @@ public class Scene5Controller implements Initializable {
         else if(rButton2.isSelected()) lvl=2;
         else if(rButton3.isSelected()) lvl=3;
     }
-    public void gotogame(ActionEvent e) throws IOException{ // On Action of Start Game Button
-        System.out.println("Work in progress");
+    public void gotogame(ActionEvent e) { // On Action of Start Game Button
+        try{
+            fxmlLoader.loadinFxml(e, "game.fxml");
+        } catch(Exception se){
+            System.out.println(se);
+        }
     }
 
-    public void goback(ActionEvent event) throws IOException {
-        System.out.println(log);
-        root = FXMLLoader.load(getClass().getResource("Scene4.fxml")); // Going to 'after signing or logging in' GUI
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void goback(ActionEvent event)  {
+        try {
+//        System.out.println(log);
+            fxmlLoader.loadinFxml(event, "Scene4.fxml"); // Going to 'after signing or logging in' GUI
+        }catch (Exception e){
+            System.out.println(e);
+
+        }
     }
 }

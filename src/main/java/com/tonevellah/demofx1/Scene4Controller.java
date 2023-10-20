@@ -12,30 +12,25 @@ import java.io.IOException;
 import static com.tonevellah.demofx1.Scene1Controller.*;
 public class Scene4Controller {
     @FXML
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-    @FXML
     Text advc;
     @FXML
     Text uname;
-    public void tips(String str){
-        advc.setText(str);
+    private FxmlLoader fxmlLoader = new FxmlLoader();
+//    public void tips(String str){
+//        advc.setText(str);
+//    }
+    public void playGame(ActionEvent e) { // On Action of WPM rush
+        try {
+            fxmlLoader.loadinFxml(e, "Scene5.fxml");
+        } catch (Exception error){
+            System.out.println(error);
+        }
     }
-    public void playGame(ActionEvent e) throws IOException { // On Action of WPM rush
-
-        root = FXMLLoader.load(getClass().getResource("Scene5.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void exit(ActionEvent e)throws IOException {
-        log=0;
-        root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void exit(ActionEvent e){
+        try {
+            fxmlLoader.loadinFxml(e,"hello-view.fxml");
+        }catch (Exception er){
+            System.out.println(er);
+        }
     }
 }

@@ -21,9 +21,6 @@ import java.sql.*;
 import static com.tonevellah.demofx1.Scene1Controller.log;
 
 public class Scene2Controller {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
     @FXML
     private TextField uname;
     @FXML
@@ -33,6 +30,7 @@ public class Scene2Controller {
     public String username;
     public String password;
     private Scene2ControllerDao scene2ControllerDao = new Scene2ControllerDao();
+    private FxmlLoader fxmlLoader = new FxmlLoader();
 
     public void menu(ActionEvent event)  {
         username=uname.getText();
@@ -42,11 +40,8 @@ public class Scene2Controller {
             if (scene2ControllerDao.checkUserExist(username,password)) {
                 try {
                     log = 1;
-                    root = FXMLLoader.load(getClass().getResource("Scene4.fxml"));
-                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
+                    fxmlLoader.loadinFxml(event,"Scene4.fxml");
+
                 } catch (Exception e){
                     System.out.println(e);
                 }
@@ -61,7 +56,6 @@ public class Scene2Controller {
             try {
                 CloseResourcesDao closingResources = new CloseResourcesDao();
                 closingResources.closeResources();
-                System.out.println("All resources closed.");
             } catch (Exception e){
                 System.out.println(e);
                 System.out.println("Error while closing connection in Scene 2 controller.");
@@ -70,11 +64,8 @@ public class Scene2Controller {
     }
     public void goback(ActionEvent event)  {
         try {
-            root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            fxmlLoader.loadinFxml(event,"hello-view.fxml");
+
         } catch (Exception e){
             System.out.println(e);
             System.out.println("Failed to load hello-view.fxml");

@@ -18,9 +18,6 @@ import java.io.*;
 
 import static com.tonevellah.demofx1.Scene1Controller.log;
 public class Scene3Controller {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
     @FXML
     private TextField uname;
     @FXML
@@ -30,11 +27,20 @@ public class Scene3Controller {
     public String username;
     public String password;
     private Scene3ControllerDao scene3ControllerDao = new Scene3ControllerDao();
+    private FxmlLoader fxmlLoader = new FxmlLoader();
 
     public void menu(ActionEvent event) throws IOException {
         username=uname.getText();
         password=pass.getText();
-
+        if(username.equals("")){
+            warning.setText("Enter a Username");
+            warning.setVisible(true);
+        }
+        else if(password.equals("")){
+            warning.setText("Enter a Password");
+            warning.setVisible(true);
+        }
+    else {
         try {
             if (scene3ControllerDao.ifUsersExists(username)) { // If username already exists
                 warning.setText("Name already taken!");
@@ -45,12 +51,9 @@ public class Scene3Controller {
                 pass.setText("");
             } else { // If username doesn't exist.
                 scene3ControllerDao.addUser(username,password); // Adding user into the user table.
-          log=1;
-                root = FXMLLoader.load(getClass().getResource("Scene4.fxml"));
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+                log=1;
+                fxmlLoader.loadinFxml(event,"Scene4.fxml");
+
             }
         } catch (Exception e){
             System.out.println(e);
@@ -65,11 +68,12 @@ public class Scene3Controller {
             }
         }
     }
-    public void goback(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    }
+    public void goback(ActionEvent event) {
+        try {
+            fxmlLoader.loadinFxml(event, "hello-view.fxml");
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
 }
