@@ -7,13 +7,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.EventObject;
-
 public class FxmlLoader {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    public void loadinFxml(ActionEvent event, String fxml){
+    public void loadingFxml(ActionEvent event, String fxml){
         try {
             root = FXMLLoader.load(getClass().getResource(fxml));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

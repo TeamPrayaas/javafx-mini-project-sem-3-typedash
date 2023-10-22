@@ -1,19 +1,13 @@
 //signup GUI controller
 package com.tonevellah.demofx1;
 import com.tonevellah.demofx1.dao.CloseResourcesDao;
-import com.tonevellah.demofx1.dao.JdbcConnection;
 import com.tonevellah.demofx1.dao.Scene3ControllerDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import java.sql.*;
+
 import java.io.*;
 
 import static com.tonevellah.demofx1.Scene1Controller.log;
@@ -32,6 +26,7 @@ public class Scene3Controller {
     public void menu(ActionEvent event) throws IOException {
         username=uname.getText();
         password=pass.getText();
+
         if(username.equals("")){
             warning.setText("Enter a Username");
             warning.setVisible(true);
@@ -52,7 +47,7 @@ public class Scene3Controller {
             } else { // If username doesn't exist.
                 scene3ControllerDao.addUser(username,password); // Adding user into the user table.
                 log=1;
-                fxmlLoader.loadinFxml(event,"Scene4.fxml");
+                fxmlLoader.loadingFxml(event,"Scene4.fxml");
 
             }
         } catch (Exception e){
@@ -71,7 +66,7 @@ public class Scene3Controller {
     }
     public void goback(ActionEvent event) {
         try {
-            fxmlLoader.loadinFxml(event, "hello-view.fxml");
+            fxmlLoader.loadingFxml(event, "hello-view.fxml");
         }catch (Exception e){
             System.out.println(e);
         }
