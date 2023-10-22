@@ -27,7 +27,12 @@ public class Scene3Controller {
         username=uname.getText();
         password=pass.getText();
 
-        if(username.equals("")){
+        char firstCharOfUsername = username.charAt(0);
+        if (Character.isDigit(firstCharOfUsername)){
+            warning.setText("Can't begin Username with a Number");
+            warning.setVisible(true);
+        }
+        else if(username.equals("")){
             warning.setText("Enter a Username");
             warning.setVisible(true);
         }
@@ -35,34 +40,33 @@ public class Scene3Controller {
             warning.setText("Enter a Password");
             warning.setVisible(true);
         }
-    else {
-        try {
-            if (scene3ControllerDao.ifUsersExists(username)) { // If username already exists
-                warning.setText("Name already taken!");
-                warning.setVisible(true);
-                System.out.println("user exists");
-
-                uname.setText("");
-                pass.setText("");
-            } else { // If username doesn't exist.
-                scene3ControllerDao.addUser(username,password); // Adding user into the user table.
-                log=1;
-                fxmlLoader.loadingFxml(event,"Scene4.fxml");
-
-            }
-        } catch (Exception e){
-            System.out.println(e);
-        }finally { // Closing All Resources (Connections and all)
+        else {
             try {
-                CloseResourcesDao closingResources = new CloseResourcesDao();
-                closingResources.closeResources();
-//                System.out.println("All resources closed in Scene3Controller.");
-            } catch (Exception se){
-                System.out.println(se);
-                System.out.println("Error while closing connection in SCene 3 controller.");
+                if (scene3ControllerDao.ifUsersExists(username)) { // If username already exists
+                    warning.setText("Name already taken!");
+                    warning.setVisible(true);
+                    System.out.println("user exists");
+
+                    uname.setText("");
+                    pass.setText("");
+                } else { // If username doesn't exist.
+                    scene3ControllerDao.addUser(username,password); // Adding user into the user table.
+                    log=1;
+                    fxmlLoader.loadingFxml(event,"Scene4.fxml");
+
+                }
+            } catch (Exception e){
+                System.out.println(e);
+            } finally { // Closing All Resources (Connections and all)
+                try {
+                    CloseResourcesDao closingResources = new CloseResourcesDao();
+                    closingResources.closeResources();
+                } catch (Exception se){
+                    System.out.println(se);
+                    System.out.println("Error while closing connection in SCene 3 controller.");
+                }
             }
         }
-    }
     }
     public void goback(ActionEvent event) {
         try {
