@@ -3,7 +3,9 @@ package com.tonevellah.demofx1;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -53,7 +55,15 @@ public class Scene5Controller implements Initializable {
     }
     public void gotogame(ActionEvent e) { // On Action of Start Game Button
         try{
-            fxmlLoader.loadingFxml(e, "game.fxml");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
+            root = loader.load();
+            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            Gamecontroller gamecontroller = loader.getController();
+            gamecontroller.takeGivenLine();
+            gamecontroller.setfirstword();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } catch(Exception se){
             System.out.println(se);
         }

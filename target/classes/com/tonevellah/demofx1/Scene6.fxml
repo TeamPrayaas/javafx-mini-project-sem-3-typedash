@@ -12,9 +12,9 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tonevellah.demofx1.Scene6Controller">
     <children>
-        <Button graphicTextGap="0.0" layoutX="598.0" layoutY="573.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="200.0" text="Try Again" textFill="#333030">
+        <Button fx:id="button" graphicTextGap="0.0" layoutX="598.0" layoutY="573.0" mnemonicParsing="false" onAction="#tryagain" prefHeight="63.0" prefWidth="200.0" text="Try Again" textFill="#333030">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -23,18 +23,18 @@
          </font></Button>
       <Circle fill="WHITE" layoutX="699.0" layoutY="475.0" radius="75.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fill="WHITE" layoutX="937.0" layoutY="285.0" radius="65.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label alignment="CENTER" layoutX="653.0" layoutY="482.0" prefHeight="54.0" prefWidth="94.0" text="Label" textAlignment="CENTER">
+      <Label fx:id="wpmLabel" alignment="CENTER" layoutX="653.0" layoutY="482.0" prefHeight="54.0" prefWidth="94.0" text="Label" textAlignment="CENTER">
          <font>
             <Font size="38.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="907.0" layoutY="288.0" prefHeight="54.0" prefWidth="62.0" text="Label" textAlignment="CENTER">
+      <Label fx:id="accuracyLabel" alignment="CENTER" layoutX="907.0" layoutY="288.0" prefHeight="54.0" prefWidth="62.0" text="Label" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
       <Circle fill="#fafdff" layoutX="471.0" layoutY="286.0" radius="65.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label alignment="CENTER" layoutX="410.0" layoutY="297.0" prefHeight="35.0" prefWidth="122.0" text="Label" textAlignment="CENTER">
+      <Label fx:id="typedwordsLabel" alignment="CENTER" layoutX="410.0" layoutY="297.0" prefHeight="35.0" prefWidth="122.0" text="Label" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -70,7 +70,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="639.0" layoutY="301.0" prefHeight="35.0" prefWidth="122.0" text="Label" textAlignment="CENTER">
+      <Label fx:id="wrongWordTypedLabel" alignment="CENTER" layoutX="639.0" layoutY="301.0" prefHeight="35.0" prefWidth="122.0" text="Label" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
