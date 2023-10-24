@@ -281,7 +281,9 @@ public class Gamecontroller {
         Scene6Controller scene6controller = loader.getController();
         int acc = (int) Math.round((counter * 1.0 / countAll) * 100);
         scene6controller.displayResult(counter, acc, countAll, countAll - counter);
-        scene = new Scene(root);
+//        scene = new Scene(root);
+        scene = new Scene(root,1920,1080);
+
         stage.setScene(scene);
         stage.show();
     }

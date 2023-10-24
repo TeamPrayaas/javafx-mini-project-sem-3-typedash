@@ -61,7 +61,9 @@ public class Scene5Controller implements Initializable {
             Gamecontroller gamecontroller = loader.getController();
             gamecontroller.takeGivenLine();
             gamecontroller.setfirstword();
-            scene = new Scene(root);
+//            scene = new Scene(root);
+            scene = new Scene(root,1920,1080);
+
             stage.setScene(scene);
             stage.show();
         } catch(Exception se){
