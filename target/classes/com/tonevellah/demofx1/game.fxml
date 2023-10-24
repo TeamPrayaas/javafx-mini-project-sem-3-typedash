@@ -23,7 +23,7 @@
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></TextField>
-      <Button fx:id="viewResult" layoutX="649.0" layoutY="595.0" mnemonicParsing="false" onMouseClicked="#resultview" prefHeight="32.0" prefWidth="82.0" style="-fx-background-color: #0598ff;" text="View Result" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="viewResult" layoutX="649.0" layoutY="595.0" mnemonicParsing="false" onMouseClicked="#resultview" prefHeight="32.0" prefWidth="82.0" text="View Result" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -58,7 +58,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Pane prefHeight="650.0" prefWidth="275.0" style="-fx-background-color: #3F2B63;">
+      <Pane prefHeight="650.0" prefWidth="275.0">
          <children>
             <ImageView fitHeight="650.0" fitWidth="164.0" layoutX="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -117,7 +117,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Button layoutX="1041.0" layoutY="625.0" mnemonicParsing="false" onAction="#goBack" prefHeight="24.0" prefWidth="60.0" style="-fx-background-color: #0598ff;" text="Go back" textAlignment="CENTER" textFill="WHITE">
+      <Button layoutX="1041.0" layoutY="625.0" mnemonicParsing="false" onAction="#goBack" prefHeight="24.0" prefWidth="60.0" text="Go back" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

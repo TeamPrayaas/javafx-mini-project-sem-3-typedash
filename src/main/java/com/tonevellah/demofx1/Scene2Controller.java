@@ -31,6 +31,9 @@ public class Scene2Controller {
             if (scene2ControllerDao.checkUserExist(username,password)) {
                 try {
                     log = 1;
+                    System.out.println("user: " + username + ". pass: " + password);
+                    System.setProperty("username",username); // Making username accessible everywhere in the program
+
                     fxmlLoader.loadingFxml(event,"Scene4.fxml");
 
                 } catch (Exception e){

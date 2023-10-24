@@ -1,6 +1,7 @@
 // Typing Game Scene Controller
 package com.tonevellah.demofx1;
 import com.tonevellah.demofx1.dao.CloseResourcesDao;
+import com.tonevellah.demofx1.dao.Scene6ControllerDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -179,8 +180,6 @@ public class Gamecontroller {
                 fir++;
                 String real = programWord.getText();
 
-                countChar += s.length();
-
                 countAll++;
                 if (s.equals(real)) {
                     counter++;
@@ -194,7 +193,7 @@ public class Gamecontroller {
                     if (lvl == 1) speed = (int) wpm / 5;
                     else if (lvl == 2) speed = (int) wpm / 5 + 3;
                     else if (lvl == 3) speed = (int) wpm / 5 + 6;
-                    else if (lvl == 4) speed = (int) wpm / 5 + 9;
+//                    else if (lvl == 4) speed = (int) wpm / 5 + 9;
 
                     colf = 1;
                 } else {
@@ -260,72 +259,22 @@ public class Gamecontroller {
         }
     }
     public void resultview(MouseEvent e) throws IOException {
-        String username = String.valueOf(scene2Controller.username);
-//        try {
-//            File file = new File("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniProjectSem3\\resources\\usname.txt");
-//            Scanner fileinput = new Scanner(file);
-//
-//            while (fileinput.hasNext()) {
-//                String s = fileinput.nextLine();
-//                username=s;
-//            }
-//            fileinput.close();
-//        }
-//        catch(Exception fe){
-//            System.out.println("Error in game controller line 199");
-//            System.out.println(fe);
-//        }
+        String username = System.getProperty("username");
+        System.out.println("username in gc " + username);
 
-//        Connection connection = null;
-//        PreparedStatement psInsert = null;
-//        PreparedStatement psCheckUserExists = null;
-//        ResultSet resultSet = null;
-
-//        try {
-//            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?20");
-//
-//            psInsert = connection.prepareStatement("INSERT INTO races(username,wpm) VALUES(?,?)");
-//            psInsert.setString(1, username);
-//            psInsert.setInt(2, counter);
-//            psInsert.executeUpdate();
-//        } catch (SQLException se) {
-//            System.out.println("error in line 314 game controller");
-//            System.out.println(se);
-//        } finally {
-//            try {
-//                CloseResourcesDao closingResources = new CloseResourcesDao();
-//                closingResources.closeResources();
-////                System.out.println("All resources closed in game controller.");
-//            } catch (Exception se){
-//                System.out.println(se);
-//                System.out.println("Error while closing resources in game controller.");
-//            }
-//        }
-//        //extra
-//        try {
-//            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?20");
-//
-//            psInsert = connection.prepareStatement("INSERT INTO extra(username,wpm,accuracy,totword,totchar,pretime) VALUES(?,?,?,?,?,?)");
-//            psInsert.setString(1, username);
-//            psInsert.setInt(2, counter);
-//            int acc = (int) Math.round((counter * 1.0 / countAll) * 100);
-//            psInsert.setInt(3, acc);
-//            psInsert.setInt(4, countAll);
-//            psInsert.setInt(5, countChar);
-//            psInsert.setInt(6, (int)pretime);
-//            psInsert.executeUpdate();
-//
-//
-//        } catch (SQLException se) {
-//            se.printStackTrace();
-//        } finally {
-//            try {
-//                CloseResourcesDao closingResources = new CloseResourcesDao();
-//                closingResources.closeResources();
-//            } catch (Exception se){
-//                System.out.println(se);
-//            }
-//        }
+//        Inserting into users_record table
+        try {
+            Scene6ControllerDao scene6ControllerDao = new Scene6ControllerDao();
+            scene6ControllerDao.insertIntoUsersRecord(username,counter,countAll);
+        }
+        finally {
+            try {
+                CloseResourcesDao closingResources = new CloseResourcesDao();
+                closingResources.closeResources();
+            } catch (Exception se){
+                System.out.println(se);
+            }
+        }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Scene6.fxml"));
         root = loader.load();
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -340,9 +289,8 @@ public class Gamecontroller {
     // if time over logic below
     private int countAll = 0;
     private int counter = 0;
-    private int timer = 3;
+    private int timer = 60;
     private int speed = 0;
-    private int countChar=0;
     Runnable r = new Runnable() {
         @Override
         public void run() {
@@ -376,7 +324,6 @@ public class Gamecontroller {
                     viewResult.setDisable(false);
                     executor.shutdown();
                 }
-//                timer -= 1;
             }
         }
     };

@@ -52,8 +52,7 @@ public class Scene3Controller {
                 } else { // If username doesn't exist.
                     scene3ControllerDao.addUser(username,password); // Adding user into the user table.
                     log=1;
-                    fxmlLoader.loadingFxml(event,"Scene4.fxml");
-
+                    fxmlLoader.loadingFxml(event,"hello-view.fxml");
                 }
             } catch (Exception e){
                 System.out.println(e);
