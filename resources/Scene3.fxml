@@ -50,7 +50,7 @@
       <Circle fill="#3f2b63" layoutX="10.0" layoutY="162.0" radius="505.0" stroke="BLACK" strokeType="INSIDE" />
       <ImageView fitHeight="344.0" fitWidth="375.0" layoutX="154.0" layoutY="301.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@TypeDash1.png" />
+            <Image url="@TypeAcceleratorLogo.png" />
          </image>
       </ImageView>
       <Text fill="WHITE" layoutX="164.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Why Here?">
