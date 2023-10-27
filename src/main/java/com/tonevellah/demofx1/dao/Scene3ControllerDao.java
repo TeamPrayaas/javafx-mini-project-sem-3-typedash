@@ -1,13 +1,9 @@
 package com.tonevellah.demofx1.dao;
-
 import java.sql.*;
-
 public class Scene3ControllerDao {
-
     JdbcConnection jdbcConnection = new JdbcConnection();
     PreparedStatement psInsert = null;
     Statement userTable = null;
-
     private final String GET_USERS = "SELECT * FROM users";
     private final String ADD_USER_BY_USERNAME_PASSWORD = "INSERT INTO users(username,password) VALUES(?,?)";
 

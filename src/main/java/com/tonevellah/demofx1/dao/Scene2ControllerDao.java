@@ -1,11 +1,7 @@
 package com.tonevellah.demofx1.dao;
-
 import com.tonevellah.demofx1.dao.CloseResourcesDao;
-
 import java.io.IOException;
 import java.sql.*;
-
-
 public class Scene2ControllerDao {
     JdbcConnection con = new JdbcConnection();
     PreparedStatement preparedStatement = null;

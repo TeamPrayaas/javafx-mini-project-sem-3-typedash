@@ -18,7 +18,7 @@ public class HelloApplication extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
             Scene scene = new Scene(root);
             stage.setTitle("TYPE DASH");
-            Image icon = new Image("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniProjectSem3\\src\\main\\resources\\com\\tonevellah\\demofx1\\TypeAcceleratorLogo1.png");
+            Image icon = new Image("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniProjectSem3\\src\\main\\resources\\com\\tonevellah\\demofx1\\GameTaskBarLogo.png");
             stage.getIcons().add(icon);
             stage.setFullScreen(true);
             stage.setScene(scene);

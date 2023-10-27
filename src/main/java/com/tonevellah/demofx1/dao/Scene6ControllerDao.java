@@ -6,9 +6,7 @@ import java.sql.SQLException;
 public class Scene6ControllerDao {
     private final String INSERT_INTO_USERS_RECORD = "INSERT INTO users_record(username,wpm,accuracy,totword,wrongWords) VALUES(?,?,?,?,?)";
     PreparedStatement psInsert = null;
-
     private JdbcConnection jdbcConnection = new JdbcConnection();
-
     public void insertIntoUsersRecord(String username,int wpm, int totWord){
         try {
             psInsert = jdbcConnection.con().prepareStatement(INSERT_INTO_USERS_RECORD);
@@ -24,6 +22,5 @@ public class Scene6ControllerDao {
             System.out.println(e);
             throw new RuntimeException(e);
         }
-
     }
 }
