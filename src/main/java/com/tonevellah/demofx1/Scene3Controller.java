@@ -27,12 +27,7 @@ public class Scene3Controller {
         username=uname.getText();
         password=pass.getText();
 
-        char firstCharOfUsername = username.charAt(0);
-        if (Character.isDigit(firstCharOfUsername)){
-            warning.setText("Can't begin Username with a Number");
-            warning.setVisible(true);
-        }
-        else if(username.equals("")){
+         if(username.equals("")){
             warning.setText("Enter a Username");
             warning.setVisible(true);
         }
@@ -40,6 +35,10 @@ public class Scene3Controller {
             warning.setText("Enter a Password");
             warning.setVisible(true);
         }
+        else if (Character.isDigit(username.charAt(0))){
+             warning.setText("Can't begin Username with a Number");
+             warning.setVisible(true);
+         }
         else if (username.length() < 5){
             warning.setText("Length of Username must be greater than 4");
             warning.setVisible(true);
