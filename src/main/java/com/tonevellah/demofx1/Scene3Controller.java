@@ -40,6 +40,14 @@ public class Scene3Controller {
             warning.setText("Enter a Password");
             warning.setVisible(true);
         }
+        else if (username.length() < 5){
+            warning.setText("Length of Username must be greater than 4");
+            warning.setVisible(true);
+        }
+        else if (password.length() < 8){
+            warning.setText("Length of Password must be greater than 7");
+            warning.setVisible(true);
+        }
         else {
             try {
                 if (scene3ControllerDao.ifUsersExists(username)) { // If username already exists

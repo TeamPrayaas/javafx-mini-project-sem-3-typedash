@@ -89,7 +89,7 @@
             <Font size="28.0" />
          </font>
       </Text>
-      <ImageView fitHeight="193.0" fitWidth="298.0" layoutX="224.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="182.0" fitWidth="279.0" layoutX="231.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Logo.png" />
          </image>
