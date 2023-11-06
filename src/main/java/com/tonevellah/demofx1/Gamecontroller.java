@@ -117,7 +117,7 @@ public class Gamecontroller {
             System.out.println("Error while retrieving text");
             System.out.println(e);
         }
-        return st1;
+        return st1; // st1 stored all the text from the file after index ranNum
     }
     String[] givenwords = givenstring.split(" "); // Creating array which will store all words from the text that will be displayed to type
 
@@ -165,7 +165,7 @@ public class Gamecontroller {
         try {
             if (first == 0) {
                 first = 1;
-                executor.scheduleAtFixedRate(r, 0, 1, TimeUnit.SECONDS);
+                executor.scheduleAtFixedRate(r, 0, 1, TimeUnit.SECONDS); // scheduled the task for execution at a fixed rate with a specified time interval
 
                 end = Instant.now();
                 Duration timeElapsed = Duration.between(start, end);
@@ -174,7 +174,7 @@ public class Gamecontroller {
 
             if (ke.getCode().equals(KeyCode.SPACE)) {
                 int colf = 5;
-                System.out.println(first);
+//                System.out.println(first);
                 String s = userWord.getText();
                 if (fir >= 1) s = s.substring(1, s.length());
                 fir++;
@@ -260,7 +260,6 @@ public class Gamecontroller {
     }
     public void resultview(MouseEvent e) throws IOException {
         String username = System.getProperty("username");
-        System.out.println("username in gc " + username);
 
 //        Inserting into users_record table
         try {
